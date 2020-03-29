@@ -7,11 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./src/bootstrap/css/bootstrap.min.css">
     <title>Dash Fifa</title>
 </head>
 
-<body>
+<body onload="loadFirstPage()">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light align-items-center">
             <a class="navbar-brand mx-auto font-weight-bold" href="#">Dash Fifa</a>
@@ -19,104 +19,29 @@
     </header>
 
     <main id="players">
-        <div class="row align-items-center mt-5">
-            <div class="col-4">
-                <div class="card mx-auto" style="width: 14rem;">
-                    <img class="card-img-top" src="https://cdn.sofifa.org/players/10/19/158023.png"
-                        alt="Imagem de capa do card">
-                    <div class="card-body text-center">
-                        <p class="bg-warning text-dark">Name: <strong>L. Messi</strong></p>
-                        <p class="mb-0">Overall: <strong>94</strong> | Position: <strong>94</strong></p>
-                        <p class="mb-0">Age: <strong>31</strong></p>
-                        <p class="mb-0">Nacionality: <img src="https://cdn.sofifa.org/flags/52.png" alt="Argentina's Flag"></p>
-                        <p class="mb-0">Club: <img src="https://cdn.sofifa.org/teams/2/light/241.png" alt="Barcelona "></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card mx-auto" style="width: 14rem;">
-                    <img class="card-img-top" src="https://cdn.sofifa.org/players/10/19/158023.png"
-                        alt="Imagem de capa do card">
-                    <div class="card-body text-center">
-                        <p class="bg-warning text-dark">Name: <strong>L. Messi</strong></p>
-                        <p class="mb-0">Overall: <strong>94</strong> | Position: <strong>94</strong></p>
-                        <p class="mb-0">Age: <strong>31</strong></p>
-                        <p class="mb-0">Nacionality: <img src="https://cdn.sofifa.org/flags/52.png" alt="Argentina Flag's"></p>
-                        <p class="mb-0">Club: <img src="https://cdn.sofifa.org/teams/2/light/241.png" alt="Barcelona "></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card mx-auto" style="width: 14rem;">
-                    <img class="card-img-top" src="https://cdn.sofifa.org/players/10/19/158023.png" alt="Imagem de capa do card">
-                    <div class="card-body text-center">
-                        <p class="bg-warning text-dark">Name: <strong>L. Messi</strong></p>
-                        <p class="mb-0">Overall: <strong>94</strong> | Position: <strong>94</strong></p>
-                        <p class="mb-0">Age: <strong>31</strong></p>
-                        <p class="mb-0">Nacionality: <img src="https://cdn.sofifa.org/flags/52.png" alt="Argentina Flag's"></p>
-                        <p class="mb-0">Club: <img src="https://cdn.sofifa.org/teams/2/light/241.png" alt="Barcelona "></p>
-                    </div>
-                </div>
-            </div>
+        <div class="d-flex justify-content-center my-auto">
+            <span>Loading...</span>
+            <div class="spinner-border" role="status"></div>
         </div>
-        
-        <div class="row align-items-center mt-5">
-            <div class="col-4">
-                <div class="card mx-auto" style="width: 14rem;">
-                    <img class="card-img-top" src="https://cdn.sofifa.org/players/10/19/158023.png"
-                        alt="Imagem de capa do card">
-                    <div class="card-body text-center">
-                        <p class="bg-warning text-dark">Name: <strong>L. Messi</strong></p>
-                        <p>Overall: <strong>94</strong> | Position: <strong>94</strong></p>
-                        <p>Age: <strong>31</strong></p>
-                        <p>Nacionality: <img src="https://cdn.sofifa.org/flags/52.png" alt="Argentina Flag's"></p>
-                        <p>Club: <img src="https://cdn.sofifa.org/teams/2/light/241.png" alt="Barcelona "></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card mx-auto" style="width: 14rem;">
-                    <img class="card-img-top" src="https://cdn.sofifa.org/players/10/19/158023.png"
-                        alt="Imagem de capa do card">
-                    <div class="card-body text-center">
-                        <p class="bg-warning text-dark">Name: <strong>L. Messi</strong></p>
-                        <p>Overall: <strong>94</strong> | Position: <strong>94</strong></p>
-                        <p>Age: <strong>31</strong></p>
-                        <p>Nacionality: <img src="https://cdn.sofifa.org/flags/52.png" alt="Argentina Flag's"></p>
-                        <p>Club: <img src="https://cdn.sofifa.org/teams/2/light/241.png" alt="Barcelona "></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card mx-auto" style="width: 14rem;">
-                    <img class="card-img-top" src="https://cdn.sofifa.org/players/10/19/158023.png" alt="Imagem de capa do card">
-                    <div class="card-body text-center">
-                        <p class="bg-warning text-dark">Name: <strong>L. Messi</strong></p>
-                        <p>Overall: <strong>94</strong> | Position: <strong>94</strong></p>
-                        <p>Age: <strong>31</strong></p>
-                        <p>Nacionality: <img src="https://cdn.sofifa.org/flags/52.png" alt="Argentina Flag's"></p>
-                        <p>Club: <img src="https://cdn.sofifa.org/teams/2/light/241.png" alt="Barcelona "></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </main>
 
     <nav aria-label="Navegação de página exemplo">
         <ul class="pagination justify-content-center mt-2">
-          <li class="page-item active"><a id="page-1" class="page-link" href="#">1</a></li>
-          <li class="page-item"><a id="page-2" class="page-link" href="#">2</a></li>
-          <li class="page-item"><a id="page-3" class="page-link" href="#">3</a></li>
+          <li class="page-item active" id="page-1"><a class="page-link" href="#">1</a></li>
+          <li class="page-item" id="page-2"><a class="page-link" href="#">2</a></li>
+          <li class="page-item" id="page-3"><a class="page-link" href="#">3</a></li>
+          <li class="page-item" id="page-4"><a class="page-link" href="#">4</a></li>
+          <li class="page-item" id="page-5"><a class="page-link" href="#">5</a></li>
+          <li class="page-item" id="page-6"><a class="page-link" href="#">6</a></li>
         </ul>
       </nav>
 
     <!-- Optional JavaScript -->
-    <script src="scripts.js"></script>
+    <script src="./src/scripts/scripts.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="./node_modules/popper.js/dist/umd/popper.min.js"></script>
-    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./src/jquery/jquery-3.3.1.slim.min.js"></script>
+    <script src="./src/popper.js/popper.min.js"></script>
+    <script src="./src/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>
