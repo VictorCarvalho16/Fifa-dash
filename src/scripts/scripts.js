@@ -6,16 +6,11 @@ const page4Link = document.getElementById('page-4')
 const page5Link = document.getElementById('page-5')
 const page6Link = document.getElementById('page-6')
 const navPages = document.getElementById('navigation')
+const htmlPage = document.querySelector('html')
 
 async function retrievePlayersInfo(skip, limit) {
     const baseUrl = 'https://fifagama.herokuapp.com/fifa19'
     let response = await fetch(`${baseUrl}/${skip}/${limit}`)
-    playersMain.innerHTML = `
-    <div class="d-flex justify-content-center my-auto">
-        <span>Loading...</span>
-        <div class="spinner-border" role="status"></div>
-    </div>
-    `
 
     return response.json();
 }
@@ -34,23 +29,23 @@ function buildHTML(players) {
                     alt="${player.Name}'s Photo">
                 <div class="card-body text-center">
                     <p class="mb-2 player-name"><strong>${player.Name}</strong></p>
-                    <p class="mb-0">Overall: <strong>${player.Overall}</strong> | Position: <strong>${player.Position}</strong></p>
-                    <p class="mb-0">Age: <strong>${player.Age}</strong></p>
-                    <p class="mb-0">Nacionality: <img src="${player.Flag}" alt="${player.Nationality}'s Flag"></p>
-                    <p class="mb-0 pb-2">Club: <img src="${player['Club Logo']}" alt="${player.Club} "></p>
+                    <p class="mb-0">Overall <strong>${player.Overall}</strong> | Position: <strong>${player.Position}</strong></p>
+                    <p class="mb-0">Age <strong>${player.Age}</strong></p>
+                    <p class="mb-0">Nacionality <img src="${player.Flag}" alt="${player.Nationality}'s Flag"></p>
+                    <p class="mb-0 pb-2">Club <img src="${player['Club Logo']}" alt="${player.Club} "></p>
                 </div>
             </div>
         </div>
         `  
         if(count % 3 === 0 || count === 0) {
             lineDiv = document.createElement('div')
-            lineDiv.className = 'row align-items-center mt-5'
+            lineDiv.className = 'row align-items-center mt-5 mx-0'
         }
 
         lineDiv.innerHTML += html
         playersMain.appendChild(lineDiv)
 
-        playersMain.style.height = 'auto'
+        htmlPage.style.height = 'auto'
         navPages.style.display = 'block'
 
         count++
@@ -59,8 +54,8 @@ function buildHTML(players) {
 
 function Loading() {
     navPages.style.display = 'none'
-    playersMain.style.height = '100%'
-    playersMain.innerHTML = `<div class="d-flex justify-content-center my-auto">
+    htmlPage.style.height = '100%'
+    playersMain.innerHTML = `<div class="d-flex justify-content-center my-auto loading">
     <span>Loading...</span>
     <div class="spinner-border" role="status"></div>
     </div>`
