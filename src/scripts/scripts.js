@@ -77,10 +77,6 @@ function buildHTML(players) {
         </div>
         </div>
 
-        <script>
-
-        </script
-
         `
 
         if (count % 3 === 0 || count === 0) {
