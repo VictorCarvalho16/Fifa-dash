@@ -11,6 +11,10 @@ body {
     padding-top: 10px;
 }
 
+.card-player:hover {
+    cursor: pointer;
+}
+
 .player-name {
     border-bottom: 2px solid #e9cc745b;
 }
