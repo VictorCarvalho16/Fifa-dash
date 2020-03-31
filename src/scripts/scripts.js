@@ -23,7 +23,6 @@ function buildHTML(players) {
     players.map(player => {
         player = player.data
 
-        playerPassing = parseInt((parseInt(player.ShortPassing) + parseInt(player.LongPassing)) / 2)
         let html = `
         <div class="col-4">
             <a data-toggle="modal" data-target="#info${player.ID}">
@@ -45,33 +44,17 @@ function buildHTML(players) {
         <div class="modal fade" id="info${player.ID}" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">${player.Name}'s Status</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
             <div class="modal-body">
-            ${player.Dribbling}<hr/>
-            ${player.Acceleration}<hr/>
-            ${player.BallControl}<hr/>
-            ${player.Finishing}<hr/>
-            ${player.Positioning}<hr/>
-            ${player.Finishing}<hr/>
-            ${player.Strength}<hr/>
-            ${player.Interceptions}<hr/>
-            ${playerPassing}<hr/>
-
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
             <div class="content">
                 <div class="wrapper" style="max-width: 512px; margin: auto">
                     <canvas id="${player.ID}-graphic"></canvas>
                 </div>
             </div>
             <hr/>
-            Preferred Foot <strong>${player['Preferred Foot']}</strong>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <p class="text-center">Preferred Foot <strong>${player['Preferred Foot']}</strong></p>
             </div>
             </div>
         </div>
@@ -87,7 +70,7 @@ function buildHTML(players) {
         lineDiv.innerHTML += html
         playersMain.appendChild(lineDiv)
 
-        htmlPage.style.height = 'auto'
+        //htmlPage.style.height = 'auto'
         navPages.style.display = 'block'
 
         count++
@@ -95,13 +78,23 @@ function buildHTML(players) {
 
     players.map(player => {
         player = player.data
+
+        playerPassing = parseInt((parseInt(player.ShortPassing) + parseInt(player.LongPassing)) / 2)
+        gkAbilities = parseInt((
+            parseInt(player.GKDiving) +
+            parseInt(player.GKHandling) +
+            parseInt(player.GKKicking) +
+            parseInt(player.GKPositioning) +
+            parseInt(player.GKReflexes)
+            ) / 5
+        ) 
         new Chart(document.getElementById(`${player.ID}-graphic`),{
             "type":"radar",
             "data":{
                 "labels":[
-                    "Dribbling","Drinking","Sleeping","Designing","Coding","Cycling","Running"],
+                    "Dribbling","Acceleration","BallControl","Finishing","Positioning","Strength","Interceptions", "Passing", "Goal Keeper"],
                 "datasets":[{
-                    "label":"My Second Dataset","data":[player.Dribbling,48,40,19,96,27,100],
+                    "label":`${player.Name}'s Status`,"data":[player.Dribbling,player.Acceleration,player.BallControl,player.Finishing,player.Positioning,player.Strength,player.Interceptions, playerPassing, gkAbilities],
                     "fill":true,
                     "backgroundColor":"rgba(54, 162, 235, 0.2)",
                     "borderColor":"rgb(54, 162, 235)",
@@ -116,15 +109,21 @@ function buildHTML(players) {
                             "tension":0,
                             "borderWidth":3
                         }
+                    },
+                    "scale":{
+                        "ticks":{
+                            "min":0,
+                            "max":100
+                        }
                     }
-                }
+                },
         });
     })
 }
 
 function Loading() {
     navPages.style.display = 'none'
-    htmlPage.style.height = '100%'
+    //htmlPage.style.height = '100%'
     playersMain.innerHTML = `
     <div class="d-flex justify-content-center my-auto loading">
         <span>Loading...</span>
@@ -147,9 +146,9 @@ function changeActivePagination(page) {
 window.onload = Loading(), retrievePlayersInfo(0, 9).then(players => buildHTML(players))
 
 page1Link.addEventListener('click', () => {
-    retrievePlayersInfo(0, 9)
-
     changeActivePagination(1)
+        
+    retrievePlayersInfo(0, 9)
         .then(players => buildHTML(players))
 
 })
