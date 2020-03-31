@@ -25,7 +25,7 @@ function buildHTML(players) {
         let html = `
         <div class="col-lg-4 col-md-6 col-12">
             <a data-toggle="modal" data-target="#info${player.ID}">
-            <div class="card mx-auto card-player" style="width: 16rem;">
+            <div class="card mx-auto card-player mb-2" style="width: 16rem;">
                 <img class="card-img-top mx-auto mt-2" style="width: 12rem;" src="${player.Photo.replace('/4/', '/10/')}"
                     alt="${player.Name}'s Photo">
                 <div class="card-body text-center">
