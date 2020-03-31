@@ -6,7 +6,6 @@ const page4Link = document.getElementById('page-4')
 const page5Link = document.getElementById('page-5')
 const page6Link = document.getElementById('page-6')
 const navPages = document.getElementById('navigation')
-const htmlPage = document.querySelector('html')
 
 async function retrievePlayersInfo(skip, limit) {
     const baseUrl = 'https://fifagama.herokuapp.com/fifa19'
@@ -24,7 +23,7 @@ function buildHTML(players) {
         player = player.data
 
         let html = `
-        <div class="col-4">
+        <div class="col-lg-4 col-md-6 col-12">
             <a data-toggle="modal" data-target="#info${player.ID}">
             <div class="card mx-auto card-player" style="width: 16rem;">
                 <img class="card-img-top mx-auto mt-2" style="width: 12rem;" src="${player.Photo.replace('/4/', '/10/')}"
@@ -70,7 +69,6 @@ function buildHTML(players) {
         lineDiv.innerHTML += html
         playersMain.appendChild(lineDiv)
 
-        //htmlPage.style.height = 'auto'
         navPages.style.display = 'block'
 
         count++
@@ -123,7 +121,6 @@ function buildHTML(players) {
 
 function Loading() {
     navPages.style.display = 'none'
-    //htmlPage.style.height = '100%'
     playersMain.innerHTML = `
     <div class="d-flex justify-content-center my-auto loading">
         <span>Loading...</span>

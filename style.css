@@ -1,6 +1,5 @@
 body {
     background: url('src/img/bg.jpg') no-repeat center center / cover;
-
 }
 
 .card-player {
@@ -21,4 +20,8 @@ body {
 
 .loading {
     padding-top: 25%;
+}
+
+#players {
+    min-height: 77.5vh;
 }
