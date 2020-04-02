@@ -58,7 +58,6 @@ function buildHTML(players) {
             </div>
         </div>
         </div>
-
         `
 
         if (count % 3 === 0 || count === 0) {
@@ -75,9 +74,12 @@ function buildHTML(players) {
     })
 
     players.map(player => {
-        player = player.data
+        createPlayerRadar(player.data)
+    })
+}
 
-        playerPassing = parseInt((parseInt(player.ShortPassing) + parseInt(player.LongPassing)) / 2)
+function createPlayerRadar(player) {
+    playerPassing = parseInt((parseInt(player.ShortPassing) + parseInt(player.LongPassing)) / 2)
         gkAbilities = parseInt((
             parseInt(player.GKDiving) +
             parseInt(player.GKHandling) +
@@ -116,10 +118,9 @@ function buildHTML(players) {
                     }
                 },
         });
-    })
 }
 
-function Loading() {
+function loadingRender() {
     navPages.style.display = 'none'
     playersMain.innerHTML = `
     <div class="d-flex justify-content-center my-auto loading">
@@ -130,7 +131,7 @@ function Loading() {
 }
 
 function changeActivePagination(page) {
-    Loading()
+    loadingRender()
     let pagesItemsButtons = document.getElementsByClassName('page-item')
     for (let index = 0; index < pagesItemsButtons.length; index++) {
         pagesItemsButtons[index].classList.remove('active')
@@ -140,7 +141,7 @@ function changeActivePagination(page) {
     pageItemActive.classList.add('active')
 }
 
-window.onload = Loading(), retrievePlayersInfo(0, 9).then(players => buildHTML(players))
+window.onload = loadingRender(), retrievePlayersInfo(0, 9).then(players => buildHTML(players))
 
 page1Link.addEventListener('click', () => {
     changeActivePagination(1)
