@@ -17,7 +17,6 @@ async function retrievePlayersInfo(skip, limit) {
 function buildHTML(players) {
     playersMain.innerHTML = ''
     count = 0
-    var lineDiv
 
     players.map(player => {
         player = player.data
@@ -59,14 +58,7 @@ function buildHTML(players) {
         </div>
         </div>
         `
-
-        if (count % 3 === 0 || count === 0) {
-            lineDiv = document.createElement('div')
-            lineDiv.className = 'row align-items-center mt-5 mx-0'
-        }
-
-        lineDiv.innerHTML += html
-        playersMain.appendChild(lineDiv)
+        playersMain.innerHTML += html
 
         navPages.style.display = 'block'
 
@@ -141,12 +133,12 @@ function changeActivePagination(page) {
     pageItemActive.classList.add('active')
 }
 
-window.onload = loadingRender(), retrievePlayersInfo(0, 9).then(players => buildHTML(players))
+window.onload = loadingRender(), retrievePlayersInfo(0, 12).then(players => buildHTML(players))
 
 page1Link.addEventListener('click', () => {
     changeActivePagination(1)
         
-    retrievePlayersInfo(0, 9)
+    retrievePlayersInfo(0, 12)
         .then(players => buildHTML(players))
 
 })
@@ -154,34 +146,34 @@ page1Link.addEventListener('click', () => {
 page2Link.addEventListener('click', () => {
     changeActivePagination(2)
 
-    retrievePlayersInfo(9, 9)
+    retrievePlayersInfo(12, 12)
         .then(players => buildHTML(players))
 })
 
 page3Link.addEventListener('click', () => {
     changeActivePagination(3)
 
-    retrievePlayersInfo(18, 9)
+    retrievePlayersInfo(24, 12)
         .then(players => buildHTML(players))
 })
 
 page4Link.addEventListener('click', () => {
     changeActivePagination(4)
 
-    retrievePlayersInfo(27, 9)
+    retrievePlayersInfo(36, 12)
         .then(players => buildHTML(players))
 })
 
 page5Link.addEventListener('click', () => {
     changeActivePagination(5)
 
-    retrievePlayersInfo(36, 9)
+    retrievePlayersInfo(48, 12)
         .then(players => buildHTML(players))
 })
 
 page6Link.addEventListener('click', () => {
     changeActivePagination(6)
 
-    retrievePlayersInfo(45, 9)
+    retrievePlayersInfo(60, 12)
         .then(players => buildHTML(players))
 })
